@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: spring-petclinic-docker
-        image: crspringpetclinic.azurecr.io/spring-petclinic-docker:v1
+        image: petclinicjava.azurecr.io.azurecr.io/spring-petclinic-docker:v1
         ports:
         - containerPort: 8080

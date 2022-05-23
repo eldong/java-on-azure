@@ -176,7 +176,6 @@
 		  </from>
 		  <to>
 		    <image>${docker.image.prefix}/${project.artifactId}</image>
-        <credHelper>acr-*</credHelper>
 		  </to>
 		</configuration>
 	  </plugin>

@@ -1,10 +1,10 @@
 name: spring-petclinic-build-image
 
-on:
-  push:
-    tags:
-      - 'v*'
-  workflow_dispatch:
+on: push
+#  push:
+#    tags:
+#      - 'v*'
+#  workflow_dispatch:
 
 jobs:
 

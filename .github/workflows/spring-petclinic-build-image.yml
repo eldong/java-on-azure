@@ -7,7 +7,6 @@ on: push
 #  workflow_dispatch:
 
 jobs:
-
   build:
     name: Build spring-petclinic
     runs-on: ubuntu-latest

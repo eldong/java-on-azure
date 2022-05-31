@@ -294,6 +294,9 @@
   <profiles>
   	<profile>
     	<id>h2</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
         <properties>
             <spring.profiles.active>h2</spring.profiles.active>
         </properties>
@@ -306,9 +309,6 @@
     </profile>
     <profile>
         <id>postgres</id>
-        <activation>
-            <activeByDefault>true</activeByDefault>
-        </activation>
         <properties>
             <spring.profiles.active>postgres</spring.profiles.active>
         </properties>

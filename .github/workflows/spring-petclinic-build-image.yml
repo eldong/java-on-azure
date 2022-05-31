@@ -23,6 +23,6 @@ jobs:
             cache: maven
         - name: Build with Maven
           working-directory: ${{ matrix.dir }}
-          run: mvn -Djib.to.auth.username=petclinicdemo -Djib.to.auth.password=7bvkS4Lzt0oGhWB/rSpvXAnuzCTKBs06 compile jib:build --file pom.xml
-          # run: mvn -Djib.to.auth.username=${{ secrets.ACR_USERNAME }} -Djib.to.auth.password=${{ secrets.ACR_PASSWORD }} compile jib:build --file pom.xml
+          # run: mvn -Djib.to.auth.username=petclinicdemo -Djib.to.auth.password=7bvkS4Lzt0oGhWB/rSpvXAnuzCTKBs06 compile jib:build --file pom.xml
+          run: mvn -Djib.to.auth.username=${{ secrets.ACR_USERNAME }} -Djib.to.auth.password=${{ secrets.ACR_PASSWORD }} -Djib.to.tags=$BUILD_NUMBER compile jib:build --file pom.xml
           # run: mvn -Djib.from.auth.username=petclinicjava -Djib.from.auth.password=a1e44656-617d-4dce-b509-7a9db998c6dc compile jib:build --file pom.xml

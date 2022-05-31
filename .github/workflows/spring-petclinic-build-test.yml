@@ -3,11 +3,11 @@
 
 name: spring-petclinic-build-test
 
-on: push
-#  push:
-#    tags:
-#      - 'v*'
-#  workflow_dispatch:
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
 
 jobs:
   build:

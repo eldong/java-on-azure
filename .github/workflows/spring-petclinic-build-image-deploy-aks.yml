@@ -32,9 +32,10 @@ jobs:
 
         - name: Update postgress connection settings
           run: |
-            sed -i -e "s|%%PG_URL%|${{ secrets.PG_URL }}|g" src/main/resources/application-postgres.properties    
-            sed -i -e "s|%%PG_USERNAME%|${{ secrets.PG_USERNAME }}|g" src/main/resources/application-postgres.properties    
-            sed -i -e "s|%%PG_PASSWORD%|${{ secrets.PG_PASSWORD }}|g" src/main/resources/application-postgres.properties    
+            sed -i -e "s|%%PG_URL%%|${{ secrets.PG_URL }}|g" src/main/resources/application-postgres.properties    
+            sed -i -e "s|%%PG_USERNAME%%|${{ secrets.PG_USERNAME }}|g" src/main/resources/application-postgres.properties    
+            sed -i -e "s|%%PG_PASSWORD%%|${{ secrets.PG_PASSWORD }}|g" src/main/resources/application-postgres.properties
+            cat src/main/resources/application-postgres.properties
   
         - name: Update POM with ACR NAME
           run: |

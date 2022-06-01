@@ -4,9 +4,12 @@
 name: spring-petclinic-build-test
 
 on:
-  push:
-    tags:
-      - 'v*'
+  pull_request:
+    branches:
+      - main  
+#  push:
+#    tags:
+#      - 'v*'
   workflow_dispatch:
 
 jobs:

@@ -9,6 +9,11 @@ defaults:
   run:
     working-directory: ./sampleapps/spring-petclinic
 
+env:
+  CLUSTER_NAME: petclinic-cluster
+  CLUSTER_RESOURCE_GROUP: pet-clinic2-rg
+  NAMESPACE: default
+
 jobs:
   build:
     name: Build spring-petclinic
@@ -36,6 +41,18 @@ jobs:
         - name: Update aks yaml file
           run: |
             sed -i -e "s|%%TAG%%|$GITHUB_RUN_NUMBER|g" --debug petclinic-aks.yaml        
-        - name: dispaly updated aks yaml file
+        - name: Display updated aks yaml file
           run: |
-            cat petclinic-aks.yaml        
+            cat petclinic-aks.yaml
+            
+        - name: Set cluster credentials for kubectl
+          uses: azure/aks-set-context@v1
+          with:
+            creds: '${{ secrets.AKS_CREDENTIALS }}'
+            cluster-name: ${{ env.CLUSTER_NAME }}
+            resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
+
+        - name: Deploy updated yaml file to cluster
+          run: |
+            kubectl kubectl apply -f petclinic-aks.yaml 
+            

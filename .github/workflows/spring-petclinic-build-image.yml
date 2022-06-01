@@ -5,6 +5,9 @@ on: push
 #    tags:
 #      - 'v*'
 #  workflow_dispatch:
+defaults:
+  run:
+    working-directory: ./sampleapps/spring-petclinic
 
 jobs:
   build:
@@ -31,4 +34,5 @@ jobs:
             _format-key: '%%key%%'
             TAG: $GITHUB_RUN_NUMBER
         - name: Display updated yaml
+          working-directory: ${{ matrix.dir }}
           run: echo petclinic-aks.yaml

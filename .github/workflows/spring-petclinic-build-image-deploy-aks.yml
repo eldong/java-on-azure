@@ -36,7 +36,6 @@ jobs:
           run: |
             cat pom.xml
         - name: Build with Maven
-#          working-directory: ${{ matrix.dir }}
           run: mvn -Djib.to.auth.username=${{ secrets.ACR_USERNAME }} -Djib.to.auth.password=${{ secrets.ACR_PASSWORD }} -Djib.to.tags=$GITHUB_RUN_NUMBER compile jib:build --file pom.xml
         - name: Update aks yaml file
           run: |

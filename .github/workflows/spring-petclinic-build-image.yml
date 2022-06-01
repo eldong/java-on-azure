@@ -30,17 +30,7 @@ jobs:
         - run: ls
         - name: Update aks yaml file
           run: |
-            sed -i -e "s|%%TAG%%|$GITHUB_RUN_NUMBER|g" petclinic-aks2.yaml        
-        - name: Read petclinic-aks.yaml
-          id: package
-          uses: juliangruber/read-file-action@v1
-          with:
-            path: petclinic-aks.yaml
-        - name: Echo petclinic-aks.yaml
-          run: echo "${{ steps.package.outputs.content }}"        
-        - uses: bluwy/substitute-string-action@v1
-          id: sub
-          with:
-            _input-file: './petclinic-aks.yaml'
-            _format-key: '%%key%%'
-            imagetag: $GITHUB_RUN_NUMBER
+            sed -i -e "s|%%TAG%%|$GITHUB_RUN_NUMBER|g" --debug petclinic-aks.yaml        
+        - name: dispaly updated aks yaml file
+          run: |
+            cat petclinic-aks.yaml        

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: petclinic-frontend
-        image: "petclinicdemo.azurecr.io/spring-petclinic:23"
+        image: "petclinicdemo.azurecr.io/spring-petclinic:%%TAG%%"
 ---
 kind: Service
 apiVersion: v1

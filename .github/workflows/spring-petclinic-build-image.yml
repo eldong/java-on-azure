@@ -28,11 +28,13 @@ jobs:
           working-directory: ${{ matrix.dir }}
           run: mvn -Djib.to.auth.username=${{ secrets.ACR_USERNAME }} -Djib.to.auth.password=${{ secrets.ACR_PASSWORD }} -Djib.to.tags=$GITHUB_RUN_NUMBER compile jib:build --file pom.xml
         - run: ls
-        - name: Display updated yaml
-          working-directory: ${{ matrix.dir }}
-          run: echo petclinic-aks.yaml
-        - name: Display updated yaml
-          run: echo ./petclinic-aks.yaml
+        - name: Read petclinic-aks.yaml
+          id: package
+          uses: juliangruber/read-file-action@v1
+          with:
+            path: ./petclinic-aks.yaml
+        - name: Echo petclinic-aks.yaml
+          run: echo "${{ steps.package.outputs.content }}"        
         - uses: bluwy/substitute-string-action@v1
           id: sub
           with:

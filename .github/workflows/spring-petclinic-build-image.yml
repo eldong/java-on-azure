@@ -24,10 +24,15 @@ jobs:
             java-version: '11'
             distribution: 'temurin'
             cache: maven
+        - name: Update POM with ACR NAME
+          run: |
+            sed -i -e "s|%%ACR_NAME%%|${{ secrets.ACR_NAME }}|g" pom.xml        
+        - name: dispaly updated pom file
+          run: |
+            cat pom.xml
         - name: Build with Maven
 #          working-directory: ${{ matrix.dir }}
           run: mvn -Djib.to.auth.username=${{ secrets.ACR_USERNAME }} -Djib.to.auth.password=${{ secrets.ACR_PASSWORD }} -Djib.to.tags=$GITHUB_RUN_NUMBER compile jib:build --file pom.xml
-        - run: ls
         - name: Update aks yaml file
           run: |
             sed -i -e "s|%%TAG%%|$GITHUB_RUN_NUMBER|g" --debug petclinic-aks.yaml        

@@ -30,7 +30,7 @@ jobs:
         - run: ls
         - name: Update aks yaml file
           run: |
-            sed -i -e "s|%%TAG%%|$GITHUB_RUN_NUMBER|g" petclinic-aks.yaml        
+            sed -i -e "s|%%TAG%%|$GITHUB_RUN_NUMBER|g" petclinic-aks2.yaml        
         - name: Read petclinic-aks.yaml
           id: package
           uses: juliangruber/read-file-action@v1

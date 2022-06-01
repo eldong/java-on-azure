@@ -1,4 +1,4 @@
-name: spring-petclinic-build-image
+name: Build Pet Clinic Image and Deploy to AKS
 
 on: push
 #  push:

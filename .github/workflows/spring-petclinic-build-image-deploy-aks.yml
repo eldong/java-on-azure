@@ -54,5 +54,5 @@ jobs:
 
         - name: Deploy updated yaml file to cluster
           run: |
-            kubectl kubectl apply -f petclinic-aks.yaml 
+            kubectl apply -f petclinic-aks.yaml 
             

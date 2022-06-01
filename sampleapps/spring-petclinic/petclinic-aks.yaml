@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petclinic
+  labels:
+    app: petclinic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: petclinic-frontend
+  template:
+    metadata:
+      labels:
+        app: petclinic-frontend
+    spec:
+      containers:
+      - name: petclinic-frontend
+        image: "petclinicdemo.azurecr.io/spring-petclinic:23"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: petclinic-frontend
+spec:
+  selector:
+    app: petclinic-frontend
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: LoadBalancer
